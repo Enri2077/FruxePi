@@ -49,6 +49,8 @@ elif len(sys.argv) == 3:
 
 # CLI Menu Function
 def CLI_menu():
+    print action, action_option
+    
     # Climate
     if action == "climate":  
         # Return Temperature
@@ -265,7 +267,7 @@ def diagnosticsMoisture(gpioPIN):
 # Fetch Temperature
 def fetchTemperature(gpioPIN):
     try:
-        humidity,temperature = dht.read_retry(dht.DHT22, int(gpioPIN))
+        humidity,temperature = dht.read_retry(dht.DHT11, int(gpioPIN))
 
         if temperature is not None:
             data_output = str(round(temperature, 2)) + "*C"
@@ -279,7 +281,7 @@ def fetchTemperature(gpioPIN):
 # Fetch Raw Temperature
 def fetchRawTemperature(gpioPIN):
     try:
-        humidity,temperature = dht.read_retry(dht.DHT22, int(gpioPIN))
+        humidity,temperature = dht.read_retry(dht.DHT11, int(gpioPIN))
 
         if temperature is not None:
             data_output = round(temperature, 2)
@@ -293,7 +295,7 @@ def fetchRawTemperature(gpioPIN):
 # Fetch Humidity
 def fetchHumidity(gpioPIN):
     try:
-        humidity,temperature = dht.read_retry(dht.DHT22, int(gpioPIN))
+        humidity,temperature = dht.read_retry(dht.DHT11, int(gpioPIN))
 
         if humidity is not None and humidity <= 100:
             data_output = str(round(humidity, 2)) + "%"
@@ -307,7 +309,7 @@ def fetchHumidity(gpioPIN):
 # Fetch Raw Humidity
 def fetchRawHumidity(gpioPIN):
     try:
-        humidity,temperature = dht.read_retry(dht.DHT22, int(gpioPIN))
+        humidity,temperature = dht.read_retry(dht.DHT11, int(gpioPIN))
 
         if humidity is not None and humidity <= 100:
             data_output = round(humidity, 2)
@@ -322,7 +324,7 @@ def fetchRawHumidity(gpioPIN):
 def diagnosticsClimate(gpioPIN):
 
     try:
-        humidity,temperature = dht.read_retry(dht.DHT22, int(gpioPIN))
+        humidity,temperature = dht.read_retry(dht.DHT11, int(gpioPIN))
 
         raw_temp = int(temperature)
         raw_humidity = int(humidity)
